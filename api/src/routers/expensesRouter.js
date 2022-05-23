@@ -50,15 +50,15 @@ router.post("/", async (req, res) => {
 	}
 });
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/", async (req, res) => {
 	try {
-		const { _id } = req.params;
+		const  ids = req.body;
 		const { authorization } = req.headers; // is a user id
 
-		const data = await deleteExpense({
-			_id,
-			userId: authorization,
-		});
+		const data = await deleteExpense(
+			authorization,
+			ids,
+		);
 
 		data?._id
 			? res.json({
