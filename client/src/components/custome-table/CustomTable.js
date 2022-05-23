@@ -1,14 +1,17 @@
 import React, {useEffect} from "react";
 import { Button, ListGroup } from "react-bootstrap";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
 import {fetchExpenses} from '../../pages/dashboard/dashboardAction'
 
 
 export const CustomTable = ({ handleOnDelete }) => {
 	const {expenses} = useSelector(state => state.dashboard)
+	const dispatch = useDispatch();
 
 	useEffect(()=>{
-		fetchExpenses()
+		dispatch(fetchExpenses())
+
+		console.log(fetchExpenses());
 	}, [])
 	
 
