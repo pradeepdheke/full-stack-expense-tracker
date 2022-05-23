@@ -1,0 +1,44 @@
+#====== user api ==========#
+
+### get user api endpoint
+GET  http://localhost:8000/api/v1/users
+
+### register user api endpoint
+POST http://localhost:8000/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "jan@doe.com",
+  "password": "123456"
+}
+
+### login user
+POST http://localhost:8000/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "jan@doe.com",
+  "password": "123456"
+}
+
+
+#====== expenses api ==========#
+
+### get expenses
+GET  http://localhost:8000/api/v1/expenses
+Authorization: 6279c27d7ca31efbbbd84c30
+
+### post expenses
+POST  http://localhost:8000/api/v1/expenses
+Content-Type: application/json
+Authorization: 6278a47451dc730d6dbc3d13
+
+{
+  "name": "Food",
+  "amount": 100,
+  "date": "2020-01-01"
+}
+
+### delete expenses
+DELETE  http://localhost:8000/api/v1/expenses
