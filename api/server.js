@@ -4,8 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 import path from 'path'
-const ___dirname = path.resolve();
-console.log(___dirname)
+const __dirname = path.resolve();
+console.log(__dirname)
 // setups middleware
 import cors from "cors";
 import morgan from "morgan";
@@ -27,8 +27,11 @@ import expensesRouter from "./src/routers/expensesRouter.js";
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/expenses", useAuth, expensesRouter);
 
+app.use(express.static(path.resolve(__dirname, "./client/build")))
+
 app.get("*", (req, res) => {
-	res.status(404).send("<h1>404 Not found</h1>");
+res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
+	
 });
 
 app.listen(PORT, error => {
