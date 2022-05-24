@@ -1,7 +1,11 @@
+import 'dotenv/config'
 import express from "express";
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+import path from 'path'
+const ___dirname = path.resolve();
+console.log(___dirname)
 // setups middleware
 import cors from "cors";
 import morgan from "morgan";
